@@ -1,1 +1,0 @@
-Parent Login, Admin and associated items marked in yellow deviate from original Cake PHP version and have not be programmed in SpikeBee2020 version with C#.
