@@ -48,7 +48,7 @@ namespace Website.Data
             //optionsBuilder.UseSqlServer("Server =(localdb)\\mssqllocaldb;Database=SpikeBee;Trusted_Connection=True;");
 
             //Use the connection string from your MS SQL Server found in Azure Dashboard when publishing -- also update the string in appsettings.json
-            //optionsBuilder.UseSqlServer("Server=tcp:dh-testdb1.database.windows.net,1433;Initial Catalog=Spikebee_db;Persist Security Info=False;User ID=dhtestdb1;Password=02247428aA;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+           
             optionsBuilder.UseSqlServer("Server=tcp:spikebee.database.windows.net,1433;Initial Catalog=SpikeBeeDB2;Persist Security Info=False;User ID=spikebee;Password=1a2b3c4d5e!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
