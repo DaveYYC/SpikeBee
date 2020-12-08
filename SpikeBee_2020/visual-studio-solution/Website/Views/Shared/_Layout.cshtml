@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpikeBee @*@ViewData["Title"]*@</title>
+    <link href="~/images/SpikeBeeImage1.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*Google fonts*@
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ea4ac955eb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light navbar-toggleable-sm header">
+        <div class="container">
+            <div class="flex-item1">
+                <a asp-controller="VendorPrograms" asp-action="HomePage"><img class="nav-logo" src="~/images/SpikeBeeImage2.png" alt="SpikeBee Logo" title="Home" /></a>
+            </div>
+            <div class="flex-item2">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="middle-section">
+        <div class="jumbotron m-sm-4" style="margin-top:0px !important; padding-top:32px;">
+            <main role="main" class="main">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-light">
+        <div class="container">
+            <div class="flex-item1">
+                &copy; @DateTime.Now.Year SpikeBee  <a asp-area="" asp-controller="Home" asp-action="Privacy"> Privacy</a><a asp-area="" asp-controller="Home" asp-action="Terms"> | Terms</a>
+            </div>
+            <div class="flex-item2">
+                <a class="nav-link" href="~/Contact/Index">Contact Us</a>
+            </div>
+            <div class="flex-item3">
+                <a href="https://www.facebook.com/SpikeBeeInc" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://twitter.com/SpikeBee" target="_blank" class="fa fa-twitter"></a>
+                <a href="https://www.instagram.com/spikebeeinc" target="_blank" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

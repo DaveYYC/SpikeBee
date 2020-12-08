@@ -1,0 +1,31 @@
+﻿
+@model IEnumerable<Website.Models.VendorProgram>
+
+@{ViewData["Title"] = "Default";}
+
+<div class="_Page">
+    <div class="card-content">
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {               
+                <div class="Searchbar">
+                    <div class="flex-container">
+                        <div class="card shadow-lg p-3 mb-5 text-md-center style_prevu_kit border border-primary roundedcorner">
+                            <h3 class="card-title">@Html.DisplayFor(modelItem => item.Vendor.Name)</h3>
+                            <h4 class="card-title">@Html.DisplayFor(modelItem => item.ProgramName)</h4>
+                            <a href="/VendorPrograms/Details/@item.Id"><img class="img-card-rounded shadow-lg" src="@Url.Content(item.ProgramImage.FilePath)" width="200" height="200" /></a>
+                            <br />
+                            <br />
+                            <h4 class="card-text">@Html.DisplayFor(modelItem => item.Headline)</h4>
+                            <h6>Registration open</h6>
+                            <h6 class="card-text"> @Html.DisplayFor(modelItem => item.RegistrationStartDate) to @Html.DisplayFor(modelItem => item.RegistrationEndDate)</h6>
+                            <a class="btn btn-spikebee-blue rounded-pill" asp-action="Details" asp-route-id="@item.Id">Learn More</a>                          
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

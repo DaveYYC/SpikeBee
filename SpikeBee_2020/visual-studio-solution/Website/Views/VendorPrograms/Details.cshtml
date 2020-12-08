@@ -1,0 +1,154 @@
+﻿@model Website.Models.VendorProgram
+@using Microsoft.AspNetCore.Identity
+@using Website.Data
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Details";
+    var comments = (IEnumerable<Website.Models.ParentFeedback>)ViewBag.Comment; 
+}
+
+<div class="learn-more">
+    <center>
+        <h1>@Model.Vendor.Name</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4">
+                <h2>@Model.ProgramName</h2>
+            </div>
+            <div class="col-md-3">
+                <partial name="_StarOnly" />
+            </div>
+        </div>
+    </center>
+    <br />
+    <div class='row justify-content-center'>
+        <div class="col-md-5">
+            <dl class="row">
+                <dd class="col-sm-12">
+                    <h3>@Model.Headline</h3>
+                </dd>
+                <dt class="col-md-6">
+                    @*@Html.DisplayNameFor(model => model.DeliveryType):*@
+                    Program Delivery:
+                </dt>
+                <dd class="col-md-6">
+                    @Html.DisplayFor(model => model.DeliveryType.Type)
+                </dd>
+                <dt class="col-md-6">
+                    @*@Html.DisplayNameFor(model => model.ProgramCategory):*@
+                    Camp, Class or Event:
+                </dt>
+                <dd class="col-md-6">
+                    @Html.DisplayFor(model => model.ProgramCategory.Category)
+                </dd>
+                <dt class="col-md-6">
+                    @*@Html.DisplayNameFor(model => model.ProgramType):*@
+                    Program Type:
+                </dt>
+                <dd class="col-md-6">
+                    @Html.DisplayFor(model => model.ProgramType.Type)
+                </dd>
+                <dt class="col-md-6">
+                    @Html.DisplayNameFor(model => model.RegistrationStartDate)
+                </dt>
+                <dd class="col-md-6">
+                    @Html.DisplayFor(model => model.RegistrationStartDate)
+                </dd>
+                <dt class="col-md-6">
+                    @Html.DisplayNameFor(model => model.RegistrationEndDate)
+                </dt>
+                <dd class="col-md-6">
+                    @Html.DisplayFor(model => model.RegistrationEndDate)
+                </dd>
+                <dt class="col-md-6">
+                    @Html.DisplayNameFor(model => model.MinimumAge)
+                </dt>
+                <dd class="col-md-6">
+                    @Html.DisplayFor(model => model.MinimumAge)
+                </dd>
+                <dt class="col-md-6">
+                    @Html.DisplayNameFor(model => model.MaximumAge)
+                </dt>
+                <dd class="col-md-6">
+                    @Html.DisplayFor(model => model.MaximumAge)
+                </dd>
+                <dt class="col-md-6">
+                    @Html.DisplayNameFor(model => model.Requirements)
+                </dt>
+                <dd class="col-sm-12">
+                    @Html.DisplayFor(model => model.Requirements)
+                </dd>
+                <dt class="col-md-6">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-md-12">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </dl>
+            <br />
+        </div>
+        <div class="col-md-4">
+            <center>
+                <div class="bee-profile">
+                    <img class="rounded-circle shadow-lg p-1" src="~/images/SpikeBeeImage1.png" />
+                    </div>
+            </center>
+        </div>
+        <center>
+            <h1>For full program information and to register,</h1>
+            <h1>Please Visit:<a href="http://@Html.DisplayFor(model => model.RegistrationLink)" target="_blank">  @Html.DisplayFor(model => model.RegistrationLink)</a></h1>
+            <br />
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <div>
+                    <a class="btn btn-spikebee-blue rounded-pill" asp-action="MyPrograms">Back to My Programs</a> @*|*@
+                </div>
+            }
+            else
+            {
+                <a class="btn btn-spikebee-blue rounded-pill" asp-action="HomePage">Home</a>
+            }
+        </center>
+    </div>
+</div>
+<br />
+<center>
+    <h3><partial name="_StarAverage" /></h3>
+</center>
+<hr />
+<div>
+    <partial name="_CommentAdd" />
+</div>
+<hr />
+<div>
+    @foreach (var c in comments)
+    {
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+                <p>
+                    Rating:<br />
+                    @for (var i = 1; i <= c.Rating; i++)
+                    {
+                        <i class="fas fa-star"></i>
+                    }
+                    @for (var i = (c.Rating + 1); i <= 5; i++)
+                    {
+                        <i class="far fa-star"></i>
+                    }
+                </p>
+                <i>@c.Date.ToShortDateString()</i>
+                <br />
+            </div>
+            <div class="col-md-9">
+                @Html.Raw(c.Comment.Replace("\n", "<br />"))
+            </div>
+        </div>
+    }
+</div>
+
+
+

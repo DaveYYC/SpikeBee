@@ -1,0 +1,1 @@
+Note: Not all tables and columns in use in the 2020 version. The original database has been added to and some tables/columns have been altered. SQL SCRIPT in main folder.

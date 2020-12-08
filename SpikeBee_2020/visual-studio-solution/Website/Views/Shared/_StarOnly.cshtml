@@ -1,0 +1,23 @@
+﻿@{
+    var ratingSum = ViewBag.RatingSum;
+    var ratingCount = ViewBag.RatingCount;
+
+    decimal rating = 0;
+    if (ratingCount > 0)
+    {
+        rating = (ratingSum / ratingCount);
+    }
+    var totalRating = decimal.Parse(rating.ToString());
+}
+
+<div>
+    @for (var i = 1; i <= totalRating; i++)
+    {
+        <i class="fas fa-star"></i>
+    }
+    @for (var i = (totalRating + 1); i <= 5; i++)
+    {
+        <i class="far fa-star"></i>
+    }
+</div>
+        

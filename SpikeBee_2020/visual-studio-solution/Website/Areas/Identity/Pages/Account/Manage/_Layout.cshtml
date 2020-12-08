@@ -1,0 +1,35 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+
+<partial name="_ManageNav" />
+
+
+<div class="row justify-content-center">
+    @RenderBody()
+    <div class="col-md-5">
+        <center>
+            <div class="bee-profile">
+                <img class="rounded-circle shadow-lg p-1" src="~/images/SpikeBeeImage1.png" />
+            </div>
+        </center>
+    </div>
+</div>
+
+<br />
+<center>
+    <a class="btn btn-spikebee-blue rounded-pill" asp-controller="Vendors" asp-action="Edit" asp-route-id="@User.Claims.FirstOrDefault(x=> x.Type == "VendorId").Value">Back to Edit Your Profile</a>
+</center>
+<br />
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

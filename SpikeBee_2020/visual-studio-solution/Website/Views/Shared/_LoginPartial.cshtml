@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Website.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <strong>Hello @User.Claims.FirstOrDefault(x => x.Type == "FirstName").Value!</strong>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" title="Home" href="~/VendorPrograms/HomePage">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" title="Profile" asp-controller="Vendors" asp-action="Edit" asp-route-id="@User.Claims.FirstOrDefault(x=> x.Type == "VendorId").Value">Profile</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" title="Logout" asp-route-returnUrl="@Url.Action("HomePage", "VendorPrograms", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link">Logout</button>
+            </form>
+            @*<a class="nav-link" title="Logout" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("HomePage", "VendorPrograms", new { area = "" })">Logout</a>*@
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" title="Contact Us" href="~/Contact/Index">Contact Us</a>
+        </li>
+    }
+    else
+    {
+        @*<li class="nav-item">
+                <a class="nav-link" asp-area="Identity" asp-page="/Account/Register" asp-route-UserType="Parent" title="Parent Registration">Parent</a>
+            </li>*@
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register" asp-route-UserType="Vendor" title="Sign Up">Sign Up</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" title="Login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" title="About" href="~/Home/About">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" title="Contact Us" href="~/Contact/Index">Contact Us</a>
+        </li>
+    }
+</ul>
+

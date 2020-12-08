@@ -1,0 +1,33 @@
+﻿@using Website.Data;
+
+@{
+    var ratingSum = ViewBag.RatingSum;
+    var ratingCount = ViewBag.RatingCount;
+    //var ratingCard = ViewBag.VendorProgramId;
+
+    decimal rating = 0;
+    if (ratingCount > 0)
+    {
+        rating = (ratingSum / ratingCount);
+    }
+    var totalRating = decimal.Parse(rating.ToString());
+}
+
+<dl>
+    <dt>
+        Average Rating:
+    </dt>
+
+    <dd>
+        @for (var i = 1; i <= totalRating; i++)
+        {
+            <i class="fas fa-star"></i>
+        }
+        @for (var i = (totalRating + 1); i <= 5; i++)
+        {
+            <i class="far fa-star"></i>
+        }
+    </dd>
+</dl>
+
+

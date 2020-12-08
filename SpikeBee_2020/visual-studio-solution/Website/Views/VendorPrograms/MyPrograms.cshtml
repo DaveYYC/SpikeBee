@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Website.Models.VendorProgram>
+
+@{ ViewData["Title"] = "MyPrograms";   }
+
+<div class="_Page">
+    <center>
+        <h2>Welcome @User.Claims.FirstOrDefault(x => x.Type == "FirstName").Value! </h2>
+        <h3>This is your posted programs page</h3>
+        <h4>Here you can view, edit and delete your individual posted programs.</h4> 
+        <p>Note: Once the Registration End Date has passed, the post will become "Expired" and you will have the option to update/delete the post.</p>
+        <p>The post will not be visible on the home page until the date(s) have been updated.</p>
+        <br />
+        <a class="btn btn-primary text-light rounded-pill" asp-action="Create">Post a Program</a>
+    </center>
+    <br />
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {         
+            <div class="Searchbar">
+                <div class="flex-container">
+                    <div class="card shadow-lg p-3 mb-5 text-md-center style_prevu_kit border border-primary roundedcorner">
+                        <h3 class="card-title">@Html.DisplayFor(modelItem => item.Vendor.Name)</h3>
+                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.ProgramName)</h4>
+                        <a href="/VendorPrograms/Details/@item.Id">
+                            <img class="img-card-rounded shadow-lg"
+                                 src="@Url.Content(item.ProgramImage.FilePath)" width="200" height="200" />
+                        </a>
+                        <br />
+                        <br />
+                        <h4 class="card-text">@Html.DisplayFor(modelItem => item.Headline)</h4>
+                        @if (item.RegistrationEndDate <= DateTime.Now)
+                        {
+                            <h5 class="alert-danger"><strong>Attention: Program Expired! Edit registration dates or delete.</strong></h5>
+                        }
+                        else
+                        {
+                            <h6>Registration open</h6>
+                        }
+                        <h6 class="card-text"> @Html.DisplayFor(modelItem => item.RegistrationStartDate) to @Html.DisplayFor(modelItem => item.RegistrationEndDate)</h6>                     
+                        <center>
+                            <a class="btn btn-spikebee-blue rounded-pill" asp-action="Details" asp-route-id="@item.Id">View Details</a>
+                            <a class="btn btn-spikebee-blue rounded-pill" asp-action="Edit" asp-route-id="@item.Id">Edit Details</a>
+                            <a class="btn btn-spikebee-blue rounded-pill" asp-action="Delete" asp-route-id="@item.Id">Delete Post</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+﻿@using Website.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+@*<div class="row justify-content-center">
+        <div class="form-group">
+        <a class="btn btn-spikebee-blue rounded-pill @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Phone Number</a>
+        <a class="btn btn-spikebee-blue rounded-pill @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a>
+        <a class="btn btn-spikebee-blue rounded-pill @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a>
+        <a class="btn btn-spikebee-blue rounded-pill @ManageNavPages.PersonalDataNavClass(ViewContext)" id="deletepersonal-data" asp-page="./DeletePersonalData">Delete Profile</a>
+    </div>
+    </div>
+    <br />*@

@@ -1,0 +1,98 @@
+﻿@model Website.Models.VendorProgram
+
+@{
+    ViewData["Title"] = "Post Your Program";
+}
+
+<div class='row justify-content-md-center'>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4">
+        <h2>@ViewData["Title"]</h2>
+        <hr />
+        <br />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProgramName" class="control-label">Program Name</label>
+                <input asp-for="ProgramName" class="form-control" />
+                <span asp-validation-for="ProgramName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProgramImageId" class="control-label">Choose an Image to Best Represent the Program</label>
+                <select asp-for="ProgramImageId" class="form-control" asp-items="ViewBag.ProgramImageId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveryTypeId" class="control-label">Delivery Type</label>
+                <select asp-for="DeliveryTypeId" class="form-control" asp-items="ViewBag.DeliveryTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProgramCategoryId" class="control-label">Program Category</label>
+                <select asp-for="ProgramCategoryId" class="form-control" asp-items="ViewBag.ProgramCategoryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProgramTypeId" class="control-label">Program Type</label>
+                <select asp-for="ProgramTypeId" class="form-control" asp-items="ViewBag.ProgramTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label">Program City</label>
+                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationStartDate" class="control-label">Registration Start Date</label>
+                <input asp-for="RegistrationStartDate" class="form-control" />
+                <span asp-validation-for="RegistrationStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationEndDate" class="control-label">Registration End Date</label>
+                <input asp-for="RegistrationEndDate" class="form-control" />
+                <span asp-validation-for="RegistrationEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinimumAge" class="control-label">Minimum Age</label>
+                <input asp-for="MinimumAge" class="form-control" />
+                <span asp-validation-for="MinimumAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaximumAge" class="control-label">Maximum Age</label>
+                <input asp-for="MaximumAge" class="form-control" />
+                <span asp-validation-for="MaximumAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistrationLink" class="control-label">Registration Link (link to your webiste, do not use HTTP)</label>
+                <input asp-for="RegistrationLink" title="eg. www....com" placeholder="eg. www....com" class="form-control" />
+                <span asp-validation-for="RegistrationLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Headline" class="control-label">Descriptive Headline</label>
+                <input asp-for="Headline" class="form-control" placeholder="eg. Learn Something Something... !!" />
+                <span asp-validation-for="Headline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Full Description</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Requirements" class="control-label">Additional Requirements</label>
+                <textarea asp-for="Requirements" class="form-control"></textarea>
+                <span asp-validation-for="Requirements" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        <a class="btn btn-spikebee-blue text-light rounded-pill" asp-action="HomePage">Back to Home</a>
+    </div>
+    <div class="col-md-6">
+        <center>
+            <div class="bee-img">
+                <img class="rounded-circle shadow-lg p-1" src="~/images/SpikeBeeImage1.png" />
+            </div>
+        </center>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

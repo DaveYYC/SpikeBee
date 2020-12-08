@@ -1,0 +1,153 @@
+﻿@model Website.Models.DataManager.ProgramLocationManager
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class='row justify-content-md-center'>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <br />
+            <h3>Please provide your details:</h3>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Company/Organization/Individual Name</label>
+                <input asp-for="Name" class="form-control" placeholer="Display Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitNumber" class="control-label">Unit/Apt.#</label>
+                <input asp-for="UnitNumber" class="form-control" />
+                <span asp-validation-for="UnitNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetName" class="control-label">Street Address</label>
+                <input asp-for="StreetName" class="form-control" />
+                <span asp-validation-for="StreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                @Html.DropDownListFor(Model => Model.programCountryId, Model.ProgramCountries, "Select Country", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Province/State</label>
+                @Html.DropDownListFor(Model => Model.programProvinceId, Model.ProgramProvinces, "Select Province", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <select id="uxCity" asp-items="ViewBag.ProgramCity" class="form-control">
+                    <option>Select City</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostalCode" class="control-label"></label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+        <br />
+        <p>
+            @*<a asp-action="Index">Back to List</a>*@
+        </p>
+    </div>
+    <div class="col-md-5">
+        <center>
+            <div class="bee-img">
+                <img class="rounded-circle shadow-lg p-1" src="~/images/SpikeBeeImage1.png" />
+            </div>
+        </center>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#uxCity").change(function () {
+
+                var ProgramLocationID1 = $("#uxCity").val();
+                $.ajax({
+                    method: 'GET',
+                    url: '/VendorPrograms/GetProgramByCity',
+                    data: { id: ProgramLocationID1 }
+                }).done(function (result, statusText, xhdr) {
+                    $("#uxDisplay").html(result);
+                });
+            });
+        });
+
+        $(function () {
+            $("#programCountryId").change(function ()
+            {
+                var programCountryId = this.value;
+                $.get("@Url.Action("GetProvincesByCountry","VendorPrograms")", { id: programCountryId }, function (data) {
+                    if (data) {
+                        fillProvinces(data);
+                    }
+                });
+             });
+
+            function fillProvinces(programProvinces) {
+                $('#programProvinceId').empty();
+                var options = '';
+                for (var i = 0; i < programProvinces.length; i++) {
+                    options += '<option value="' + programProvinces[i].id + '">' + programProvinces[i].name + '</option>  ';
+                };
+
+                $('#programProvinceId').append(options);
+
+                var first = programProvinces[0].id;
+		        getCities(first);
+            }
+        })
+
+        function fillCities(programLocations) {
+            $('#uxCity').empty();
+            var city_options = '';
+            for (var i = 0; i < programLocations.length; i++) {
+                city_options += '<option value="' + programLocations[i].id + '">' + programLocations[i].name + '</option>  ';
+            };
+
+            $('#uxCity').append(city_options);
+
+            var ProgramLocationID1 = programLocations[0].id;
+
+            $("#uxDisplay").show();
+        }
+
+	function getCities(prvId){
+                $.get("@Url.Action("GetCitiesByProvince","VendorPrograms")", { id: prvId }, function (data) {
+
+                    if (data) {
+                        fillCities(data);
+                    }
+                });
+	}
+
+        $(function () {
+            $("#programProvinceId").change(function () {
+		getCities(this.value);
+            });
+        })
+
+        $(function () {
+            $("#btnReset").bind("click", function () {
+                window.location.reload();
+            });
+        });
+
+</script>
+}

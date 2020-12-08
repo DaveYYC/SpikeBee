@@ -1,0 +1,781 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+* {
+    box-sizing: border-box;
+}
+
+.middle-section {
+    padding: 0px;
+}
+
+.main {
+    padding: 0px;
+}
+
+body {
+    background-color: white;
+    margin: 0px;
+    float: none;
+   /* min-height: 60vh;*/
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/*sets min height so the footer stays near bottom on the pages with cards*/
+._Page {
+    min-height: 70vh;
+}
+/* Common Layout Styling */
+.container {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 0rem auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.foo {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/*** Navigation Styling ***/
+.navbar {
+    padding: 1rem 0;
+    padding-top: 2px;
+   
+}
+
+.flex-item1 {
+    padding: 1px 1px;
+    width: 250px;
+}
+
+.nav-logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    padding-top: 0px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    border-top-color: white;
+    border-bottom-color: white;
+    color: white;
+    background-color: #c2547b;
+    border-radius: 3px;
+}
+
+/*** Header Styling ***/
+.grid-header {
+    background-image: url("../images/image6.jpg");
+    height: 35vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.flex-header {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+   /* width: 1250px;*/
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-headertext {
+    text-align: center;
+    background: rgb(0, 0, 0); /*Fallback color*/
+    background: rgba(0, 0, 0, 0.4); /*Black background with 0.4 opacity*/
+    color: #f1f1f1; /*Grey text*/
+}
+
+.flex-header h1 {
+    font-family: 'Crimson Text', serif;
+}
+
+.about {
+    font-size: 20px;
+    width: 75%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0rem auto;
+}
+
+.column {
+    flex: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+}
+
+.column1 {
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.column2 {
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+.container page-alignment {
+    margin-left: 200px;
+}
+
+/*style the various buttons !!-overrides bootstrap-!!*/
+.btn-primary {
+    color: #fff;
+    background-color: #c2547b;
+    border-color: #c2547b;
+}
+
+.btn-spikebee-blue {
+    color: #fff;
+    background-color: #313d55;
+    border-color: #313d55;
+}
+
+/*overrides the primary button color to SpikeBee rose*/
+.btn-outline-primary {
+    border-color: #c2547b;
+}
+
+/*overrides the primary button color to SpikeBee rose*/
+.btn-primary:hover {
+    color: #fff;
+    background-color: #313d55;
+    border-color: #313d55;
+}
+
+.btn-spikebee-blue:hover {
+    color: #fff;
+    background-color: #c2547b;
+    border-color: #c2547b;
+}
+
+/*overrides the primary button color to SpikeBee rose*/
+.border-primary {
+    border-color: #c2547b !important;
+}
+
+/*SpikeBee logo on the create page*/
+.bee-img {
+    margin-top: 250px;
+}
+
+/*SpikeBee Image on Profile page*/
+.bee-profile {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+/* for Icon into the search bar*/
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+    .has-search .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.375rem;
+        text-align: center;
+        pointer-events: none;
+        color: #aaa;
+    }
+
+/*Filters section on the left*/
+.sidebar1 {
+    margin: 0;
+    margin-left: 3px;
+    margin-top: 10px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    width: 250px;
+    position: absolute;
+    overflow: auto;
+    /* border: solid .5px #313d55;*/
+}
+
+/*right side placeholder for an advertisement*/
+/* must edit this in the @media section as well*/
+.sidebar2 {
+    margin-top: 10px;
+    padding: 0;
+    float: right;
+    width: 210px;
+    margin-right: 10px;
+  
+}
+    /*placeholder image*/
+    .ad-image {
+        width: 100%;
+        height: 350px;
+    }
+
+/*alignment of the cards on the home page to work with the 2 sidebars*/
+.card-content {
+    margin-left: 155px;
+    padding-left: 45px;
+    height: 100%;
+    cursor: pointer; /* Add a mouse pointer on hover */
+}
+
+/*make the cards responsive*/
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    text-align: center;
+}
+
+/*Styles the cards with the zoom larger feature*/
+.style_prevu_kit {
+    display: inline-block;
+    border: 0; 
+    width: 23rem; /*change this value to alter the cards width*/
+    height: auto;
+    position: relative;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+}
+    .style_prevu_kit:hover {
+        box-shadow: 0px 0px 150px #000000;
+        z-index: 2;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1.1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1.1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1.1);
+        transition: all 200ms ease-in;
+        transform: scale(1.1);
+    }
+
+/*adds rounded corners to the cards*/
+.roundedcorner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 3px;
+    border-top: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+}
+
+/*back to top button*/
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 100px; /* Place the button at the bottom of the page */
+    right: 60px; /* Place the button 50px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #c2547b; /* Set a background color */
+    opacity: 0.7;
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 8px; /* Some padding */
+    border-radius: 50%; /* Rounded corners- to circle */
+    font-size: 14px; /* font size */
+}
+    #myBtn:hover {
+        background-color: #313d55; /* Add SpikeBee blue background on hover */
+    }
+
+/*rounded img for the cards*/
+.img-card-rounded {
+    border-radius: 50%;
+}
+
+/*for the delete post page*/
+.delete-post {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+/*for the learn more selection page*/
+.learn-more {
+    font-size: 20px;
+    line-height: 40px;
+    padding-bottom: 20px;
+    padding-top: 15px;
+    border-radius: 5%;
+    background-color: white;
+}
+    /*formatting the program requirments and details*/
+    .tab {
+        margin-left: 5%;
+    }
+
+    /*make stars gold*/
+    .fa-star {
+        color: gold;
+    }
+
+/*** footer styling ***/
+.footer {
+    color: white;
+    background-color: #313d55;
+    /* background-color: #c2547b;-- SpikeBee rose color*/
+    bottom: 0px;
+    width: 100%;
+    margin-top: 60px;
+    position: absolute;
+    /* position: fixed;*/
+    padding: 1rem 0rem;
+}
+
+    .footer a {
+        color: white;
+        padding: 0px 0px;
+        margin: 0px 0px;
+    }
+
+        .footer a:hover {
+            color: black;
+            text-decoration-line: none;
+        }
+
+/* Style all font awesome icons */
+.fa {
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+    /* Add a hover effect if you want */
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    /* Facebook */
+    .fa-instagram {
+        margin-left: 35px;
+        color: white;
+    }
+
+    /* Twitter */
+    .fa-twitter {
+        margin-left: 35px;
+        color: white;
+    }
+
+/********** All @Media styling for various screens etc.***************/
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+    .dl-spacing {
+        margin-left: 0px;
+        margin-right: 100px;
+    }
+    div.card-content {
+        margin-left: 225px;     
+    }  
+}
+
+@media screen and (min-width: 576px) {
+    .col {
+        flex: 50%;
+        max-width: 50%;
+    }
+    .dl-spacing {
+        margin-left: 0px;
+        margin-right: 100px;
+    } 
+}
+
+/*Manage font size*/
+@media (min-width:600px) {
+    .flex-headertext h1 {
+        font-size: 35px;
+    }   
+}
+
+@media (min-width:800px) {
+    .flex-headertexteading h1 {
+        font-size: 60px;
+    }
+}
+
+@media (min-width:1000px) {
+    .flex-headertext h1 {
+        /* Never get larger than this */
+        font-size: 67px;
+    }
+}
+    @media (max-width: 576px) {
+        .container {
+            max-width: 540px;
+            padding-top: 0rem;
+            padding-bottom: 1rem;
+            /* padding-left: 10px;
+        margin-left: 10px;*/
+        }
+
+        .flex-headertext h1 {
+            font-size: 25px;
+        }
+
+        .search-container {
+            padding: 2rem 2rem;
+        }
+
+        .search-heading {
+            padding: 1rem 2rem;
+            font-size: small;
+            font-weight: bold;
+            transition: all 0.4s;
+            border-radius: 3px;
+        }
+
+        .rounded-circle {
+            width: 250px;
+            margin: 0;
+            padding: 0;
+        }
+        .bee-img {
+            margin: 25px;
+            padding: 0;
+        }
+        .sidebar2 {
+            display: none;
+        }  
+    }
+
+    @media (min-width: 1680px) {
+        .container {
+            max-width: 1620px;
+        }     
+    }
+
+    @media screen and (max-width: 400px) {
+        .sidebar1 {
+            text-align: center;
+            float: none;
+            margin-top: 20px;
+        }
+
+        div.card-content {
+            margin-left: 0px;
+        }
+
+        .sidebar2 {
+            display: none;        
+        }
+
+        .rounded-circle {
+            width: 250px;
+            margin: 0;
+            padding: 0;
+        }
+        .bee-img {
+            margin: 25px;
+            padding: 0;
+        }  
+        h1 {
+            font-size: 22px;
+        }
+
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 100px; /* Place the button at the bottom of the page */
+            right: 20px; /* Place the button 50px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #c2547b; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 8px; /* Some padding */
+            border-radius: 50%; /* Rounded corners- to circle */
+            font-size: 14px; /* font size */
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .sidebar1 {
+            width: 100%;
+            margin-top: 30px;
+            height: auto;
+            position: relative;
+        }
+
+        div.card-content {
+            margin-left: 2px;
+            /* margin-right: 20px;*/
+            padding-right: 45px;
+        }
+
+        .sidebar2 {
+            display: none;
+        }
+
+        .rounded-circle {
+            width: 250px;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 22px;
+        }
+    }
+
+/*specifically for orginal i-Pad vertical view*/
+@media screen and (width: 768px) {
+
+    .sidebar2 {
+        display: none;
+    }
+
+    .sidebar1 {
+        width: 25%;
+        margin-top: 30px;
+        height: auto;
+        position: fixed;
+    }
+
+    .style_prevu_kit {
+        display: inline-block;
+        border: 0;
+        width: 26rem; /*change this value to alter the cards width*/
+        height: auto;
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1);
+        margin-right: 25px;
+    }
+
+        .style_prevu_kit:hover {
+            box-shadow: 0px 0px 150px #000000;
+            z-index: 2;
+            -webkit-transition: all 200ms ease-in;
+            -webkit-transform: scale(1.1);
+            -ms-transition: all 200ms ease-in;
+            -ms-transform: scale(1.1);
+            -moz-transition: all 200ms ease-in;
+            -moz-transform: scale(1.1);
+            transition: all 200ms ease-in;
+            transform: scale(1.1);
+        }
+}
+
+/*specifically for i-phone 5*/
+@media screen and (max-width: 375px) {
+
+    .sidebar2 {
+        display: none;
+    }
+    .style_prevu_kit {
+        display: inline-block;
+        border: 0;
+        width: 18rem; /*change this value to alter the cards width*/
+        height: auto;
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1);
+    }
+
+        .style_prevu_kit:hover {
+            box-shadow: 0px 0px 150px #000000;
+            z-index: 2;
+            -webkit-transition: all 200ms ease-in;
+            -webkit-transform: scale(1.1);
+            -ms-transition: all 200ms ease-in;
+            -ms-transform: scale(1.1);
+            -moz-transition: all 200ms ease-in;
+            -moz-transform: scale(1.1);
+            transition: all 200ms ease-in;
+            transform: scale(1.1);
+        } 
+}
+
+/*specifically for Surface Duo Horizontal*/
+@media screen and (width: 720px) {
+
+    .sidebar2 {
+        display: none;
+    }
+
+    .sidebar1 {
+        width: 25%;
+        margin-top: 30px;
+        height: auto;
+        position: absolute;
+    }
+
+    .style_prevu_kit {
+        display: inline-block;
+        border: 0;
+        width: 23rem; /*change this value to alter the cards width*/
+        height: auto;
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1);
+       margin-left: 40px;
+    }
+
+        .style_prevu_kit:hover {
+            box-shadow: 0px 0px 150px #000000;
+            z-index: 2;
+            -webkit-transition: all 200ms ease-in;
+            -webkit-transform: scale(1.1);
+            -ms-transition: all 200ms ease-in;
+            -ms-transform: scale(1.1);
+            -moz-transition: all 200ms ease-in;
+            -moz-transform: scale(1.1);
+            transition: all 200ms ease-in;
+            transform: scale(1.1);
+        }
+}
+
+/*specifically for I-Phone 6/7/8 PLUS Horizontal*/
+@media screen and (width: 736px) {
+
+    .sidebar2 {
+        display: none;
+    }
+
+    .sidebar1 {
+        width: 25%;
+        margin-top: 30px;
+        height: auto;
+        position: absolute;
+    }
+
+    .style_prevu_kit {
+        display: inline-block;
+        border: 0;
+        width: 23rem; /*change this value to alter the cards width*/
+        height: auto;
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1);
+        margin-left: 40px;
+    }
+
+        .style_prevu_kit:hover {
+            box-shadow: 0px 0px 150px #000000;
+            z-index: 2;
+            -webkit-transition: all 200ms ease-in;
+            -webkit-transform: scale(1.1);
+            -ms-transition: all 200ms ease-in;
+            -ms-transform: scale(1.1);
+            -moz-transition: all 200ms ease-in;
+            -moz-transform: scale(1.1);
+            transition: all 200ms ease-in;
+            transform: scale(1.1);
+        }
+}
+
+/*specifically for I-Phone X Horizontal*/
+@media screen and (width: 812px) {
+
+    .sidebar2 {
+        display: none;
+    }
+
+    .sidebar1 {
+        width: 25%;
+        margin-top: 30px;
+        height: auto;
+        position: absolute;
+    }
+
+    .style_prevu_kit {
+        display: inline-block;
+        border: 0;
+        width: 28rem; /*change this value to alter the cards width*/
+        height: auto;
+        position: relative;
+        -webkit-transition: all 200ms ease-in;
+        -webkit-transform: scale(1);
+        -ms-transition: all 200ms ease-in;
+        -ms-transform: scale(1);
+        -moz-transition: all 200ms ease-in;
+        -moz-transform: scale(1);
+        transition: all 200ms ease-in;
+        transform: scale(1);
+       
+    }
+
+        .style_prevu_kit:hover {
+            box-shadow: 0px 0px 150px #000000;
+            z-index: 2;
+            -webkit-transition: all 200ms ease-in;
+            -webkit-transform: scale(1.1);
+            -ms-transition: all 200ms ease-in;
+            -ms-transform: scale(1.1);
+            -moz-transition: all 200ms ease-in;
+            -moz-transform: scale(1.1);
+            transition: all 200ms ease-in;
+            transform: scale(1.1);
+        }
+}
+
+
+
